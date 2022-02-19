@@ -4,6 +4,8 @@ export interface Place {
 }
 
 export interface Attachment {
+    id: string;
+    user_id: string;
     type: 'document' | 'zip' | 'image' | 'audio' | 'video' | 'program' | 'code';
     filename: string;
     filepath: string;
@@ -11,6 +13,7 @@ export interface Attachment {
 }
 
 export interface ConfirmationRequest {
+    id: string;
     datetime: string;
     confirmed: boolean;
     triggers: Trigger[];
@@ -18,12 +21,14 @@ export interface ConfirmationRequest {
 
 export interface Trigger {
     id: string;
+    user_id: string;
     message: string;
     notes?: Note[];
     trigger_immediately: boolean;
     trigger_at_datetime?: string;
     share_last_location: boolean;
     share_last_events: boolean;
+    notify_emergency_events: boolean;
     created_at: Date;
     updated_at: Date;
 }
@@ -45,6 +50,7 @@ export interface Trigger_has_Contact {
 
 export interface Contact {
     id: string;
+    user_id: string;
     referencing_user_id?: string;
     name: string;
     about?: string;
@@ -53,6 +59,7 @@ export interface Contact {
     house_location?: Place;
     instagram_profile?: string;
     twitter_profile?: string;
+    is_emergency?: boolean;
     created_at: Date;
     updated_at: Date;
 }
@@ -65,14 +72,19 @@ export interface User {
     phone_number: string;
     instagram_profile?: string;
     twitter_profile?: string;
-    birth_date?: Date;
-    // medical_information: {};
+    medical_information?: {
+        birth_date: number;
+        medications: string;
+        allergies: string;
+        observations: string;
+    };
     created_at: Date;
     updated_at: Date;
 }
 
 export interface Note {
     id: string;
+    user_id: string;
     group_id: string;
     sender_user_id: string;
     title?: string;
@@ -107,6 +119,7 @@ export interface Group_has_Contact {
 
 export interface Event {
     id: string;
+    user_id: string;
     name: string;
     about: string;
     start_datetime: Date;
@@ -136,6 +149,7 @@ export interface Event_has_Contact {
 
 export interface Monitoring {
     id: string;
+    user_id: string;
     name: string;
     start_datetime: Date;
     end_datetime?: Date;

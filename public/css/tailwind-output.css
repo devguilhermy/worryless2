@@ -426,6 +426,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 1rem;
 }
 
+.mr-1 {
+  margin-right: 0.25rem;
+}
+
+.block {
+  display: block;
+}
+
 .flex {
   display: flex;
 }
@@ -442,6 +450,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   align-items: center;
 }
 
+.gap-2 {
+  gap: 0.5rem;
+}
+
 .rounded-xl {
   border-radius: 0.75rem;
 }
@@ -453,6 +465,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .p-10 {
   padding: 2.5rem;
+}
+
+.p-1 {
+  padding: 0.25rem;
 }
 
 .px-5 {

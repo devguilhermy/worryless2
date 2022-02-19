@@ -3,6 +3,13 @@ export interface Place {
     location: { lat: number; lng: number };
 }
 
+export interface Attachment {
+    type: 'document' | 'zip' | 'image' | 'audio' | 'video' | 'program' | 'code';
+    filename: string;
+    filepath: string;
+    original_filename: string;
+}
+
 export interface ConfirmationRequest {
     datetime: string;
     confirmed: boolean;
@@ -12,8 +19,9 @@ export interface ConfirmationRequest {
 export interface Trigger {
     id: string;
     message: string;
-    immediate: boolean;
-    datetime?: string;
+    notes?: Note[];
+    trigger_immediately: boolean;
+    trigger_at_datetime?: string;
     share_last_location: boolean;
     share_last_events: boolean;
     created_at: Date;
@@ -63,24 +71,13 @@ export interface User {
     updated_at: Date;
 }
 
-export interface Message {
+export interface Note {
     id: string;
     group_id: string;
     sender_user_id: string;
-    text_content?: string;
-    attachments?: {
-        type:
-            | 'document'
-            | 'zip'
-            | 'image'
-            | 'audio'
-            | 'video'
-            | 'program'
-            | 'code';
-        filename: string;
-        filepath: string;
-        original_filename: string;
-    }[];
+    title?: string;
+    text_content: string;
+    attachments?: Attachment[];
     event_id?: string;
 }
 
